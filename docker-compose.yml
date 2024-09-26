@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "5173:5173"  # Expose the correct Vite default port
+    environment:
+      - VITE_SUPABASE_URL=${VITE_SUPABASE_URL}
+      - VITE_SUPABASE_KEY=${VITE_SUPABASE_KEY}
+    volumes:
+      - .:/app  # Mount your project directory to the container
+      - /app/node_modules  # Ensure node_modules in the container is not overwritten
